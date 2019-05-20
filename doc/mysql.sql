@@ -1,0 +1,21 @@
+CREATE TABLE `user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `real_name` varchar(32) DEFAULT NULL COMMENT '用户名',
+  `login_name` varchar(64) DEFAULT NULL COMMENT '登录名',
+  `password` varchar(64) DEFAULT NULL COMMENT '密码',
+  `phone` varchar(32) DEFAULT NULL COMMENT '手机号',
+  `last_login_time` int(11) DEFAULT NULL COMMENT '最后一次登录时间',
+  `status` int(2) DEFAULT NULL COMMENT '用户状态 1正常 2禁用',
+  `created_at` int(11) NOT NULL DEFAULT '0',
+  `updated_at` int(11) NOT NULL DEFAULT '0',
+  `deleted_at` int(11) NOT NULL DEFAULT '0',
+  `group_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '用户所在组',
+  `dd_open_id` varchar(64) DEFAULT NULL COMMENT '钉钉openId',
+  `dd_union_id` varchar(64) DEFAULT NULL COMMENT '钉钉 unionId',
+  `repass_at` int(11) unsigned DEFAULT '0' COMMENT '最后修改密码时间',
+  `invite_code_edit` int(11) DEFAULT NULL COMMENT '邀请码（运营维护，填了这个字段，默认商户列表只有这个邀请码的商户可见权）',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login_name_unique` (`login_name`,`deleted_at`),
+  UNIQUE KEY `dd_unique` (`deleted_at`,`dd_open_id`,`dd_union_id`) USING HASH,
+  KEY `idx_group_id` (`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户基本信息表';
