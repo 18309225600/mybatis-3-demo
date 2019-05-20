@@ -1,6 +1,6 @@
-package com.lhf.mybatis.demo;
+package com.lhf.mybatis.test.demo;
 
-import com.lhf.mybatis.entity.User;
+import com.lhf.mybatis.test.entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,7 +24,7 @@ public class MybatisTest {
     @Test
     public void test(){
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        User user = (User)sqlSession.selectOne("com.lhf.mybatis.mapper.UserMapper.selectUsers",2);
+        User user = (User)sqlSession.selectOne("com.lhf.mybatis.test.mapper.UserMapper.selectUsers",2);
         System.out.println(user);
     }
 }

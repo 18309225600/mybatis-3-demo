@@ -1,12 +1,9 @@
-package com.lhf.mybatis.entity;
-
-import javax.persistence.Column;
+package com.lhf.mybatis.test.entity;
 
 public class User {
 
     private Integer id;
     private String realName;
-    @Column(name = "login_name")
     private String loginName;
     private String password;
     private String phone;
